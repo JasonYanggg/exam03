@@ -38,6 +38,4 @@ mqttc.connect(host, port=1883, keepalive=60)
 mqttc.subscribe(topic, 0)
 
 # Publish messages from Python
-while True:
-      mqttc.loop()
-      time.sleep(0.1)
+mqttc.loop_forever()
