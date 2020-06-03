@@ -128,7 +128,7 @@ void getAcc(void) {
       acc16 -= UINT14_MAX;
     z = ((float)acc16) / 4096.0f;
 
-    hor = sqrtf(x * x + y * y) * 0.1;
+    hor = sqrtf(x * x + y * y) * 0.1 * 9.8;
 }
 
 void getStatus(Arguments *in, Reply *out)
