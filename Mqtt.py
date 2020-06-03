@@ -13,19 +13,12 @@ mqttc = paho.Client()
 host = "localhost"
 topic = "velocity"
 
-# t = np.arange(1, 101, 1)
-# hor = np.zeros(100)
-hor = 0.0
-# num = 0
 # Callbacks
 def on_connect(self, mosq, obj, rc):
       print("Connected rc: " + str(rc))
 
 def on_message(mosq, obj, msg):
-      global num, hor
       print("[Received] Topic: " + msg.topic + ", Message: " + str(msg.payload) + "\n")
-      # hor[num] = float(msg.payload)
-      # num += 1
 
 def on_subscribe(mosq, obj, mid, granted_qos):
       print("Subscribed OK")
@@ -45,13 +38,6 @@ mqttc.connect(host, port=1883, keepalive=60)
 mqttc.subscribe(topic, 0)
 
 # Publish messages from Python
-# while num < 100:
 while True:
       mqttc.loop()
       time.sleep(0.1)
-
-# plt.plot(t, hor)
-# plt.xlabel('time')
-# plt.ylabel('velocity')
-# plt.title('# horizontal velocity plot')
-# plt.show()

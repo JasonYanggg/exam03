@@ -83,14 +83,10 @@ print("start sending RPC")
 s.write("\r".encode())
 time.sleep(1)
 
-# for i in range(0, 100):
 while True:
-    # send RPC to remote
     s.write("/getStatus/run\r".encode())
     hor = float(s.readline().decode())
-    # mqttc.publish(topic, str(hor[i]))
     mqttc.publish(topic, str(hor))
-    # print(hor[i])
     time.sleep(0.1)
 
 s.close()
