@@ -77,21 +77,19 @@ char = s.read(3)
 print("Exit AT mode.")
 print(char.decode())
 
-t = np.arange(1, 21, 1)
-hor = np.zeros(20)
-# tilt = np.zeros(20)
+hor = np.zeros(100)
 
 print("start sending RPC")
 s.write("\r".encode())
 time.sleep(1)
 
-for i in range(0, 20):
+for i in range(0, 100):
     # send RPC to remote
     s.write("/getStatus/run\r".encode())
     hor[i] = float(s.readline().decode())
     mqttc.publish(topic, str(hor[i]))
     print(hor[i])
-    time.sleep(1)
+    time.sleep(0.1)
 
 s.close()
 
